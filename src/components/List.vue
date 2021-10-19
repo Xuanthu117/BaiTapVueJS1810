@@ -44,7 +44,6 @@ export default {
       axios
         .get(link)
         .then(function(response) {
-          // console.log(self.$store.state.listData);
           self.$store.dispatch("addList", response.data);
         })
         .catch(function(error) {

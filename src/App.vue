@@ -3,8 +3,8 @@
     <List :headerTitle='[
         { name: "Id" },
         { name: "UserId" },
-        { name: "title" },
-        { name: "desc1ription" },
+        { name: "Title" },
+        { name: "Description" },
       ]' />
   </div>
 </template>
