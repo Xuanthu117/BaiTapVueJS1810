@@ -8,7 +8,7 @@
     </div>
     <div class="content">
       <div class="list-header">
-        <div v-for="item in header" :key="item.name">{{ item.name }}</div>
+        <div class="header-text" v-for="item in headerTitle" :key="item.name">{{ item.name }}</div>
       </div>
       <ul class="list">
         <li class="list-item" v-for="item in data" :key="item.id">
@@ -26,15 +26,8 @@ import axios from "axios";
 const link = "https://jsonplaceholder.typicode.com/posts";
 export default {
   name: "List",
-  data() {
-    return {
-      header: [
-        {name: "Id"},
-        {name: "UserId"},
-        {name: "title"},
-        {name: "description"},
-      ],
-    };
+  props: {
+    headerTitle: Array,
   },
   computed: {
     data() {
@@ -42,21 +35,22 @@ export default {
     },
   },
   created() {
+    console.log(this.headerTitle);
     this.fetchData();
   },
   methods: {
     fetchData() {
       const self = this;
       axios
-          .get(link)
-          .then(function(response) {
+        .get(link)
+        .then(function(response) {
           // console.log(self.$store.state.listData);
-            self.$store.dispatch("addList", response.data);
-          })
-          .catch(function(error) {
-            console.log(error);
-          })
-          .then(function() {});
+          self.$store.dispatch("addList", response.data);
+        })
+        .catch(function(error) {
+          console.log(error);
+        })
+        .then(function() {});
     },
   },
 };
