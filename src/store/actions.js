@@ -1,15 +1,15 @@
 import axios from "axios";
 export default {
-  getList({ commit }, listData) {
+  getList({ commit }) {
     const link = "https://jsonplaceholder.typicode.com/posts";
     axios
-    .get(link)
-    .then(function(response) {
-      commit("addList", response.data);
-    })
-    .catch(function(error) {
-      console.log(error);
-    })
-    .then(function() {});
+      .get(link)
+      .then(function(response) {
+        commit("addList", response.data);
+      })
+      .catch(function(error) {
+        console.log(error);
+      })
+      .then(function() {});
   },
 };

@@ -25,8 +25,6 @@
 </template>
 <script>
 import { mapState } from "vuex";
-
-
 export default {
   name: "List",
   props: {
@@ -42,7 +40,7 @@ export default {
   },
   methods: {
     fetchData() {
-     this.$store.dispatch("getList");
+      this.$store.dispatch("getList");
     },
   },
 };
