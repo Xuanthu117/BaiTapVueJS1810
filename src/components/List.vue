@@ -3,8 +3,8 @@
     <div class="header">
       <b> Danh sách</b>
       <small>
-        Số bản ghi: <span class="">{{ data.length }}</span> bản ghi.</small
-      >
+        Số bản ghi: <span class="">{{ data.length }}</span> bản ghi.
+      </small>
     </div>
     <div class="content">
       <div class="list-header">
@@ -27,6 +27,7 @@
 import axios from "axios";
 import { mapState } from "vuex";
 const link = "https://jsonplaceholder.typicode.com/posts";
+
 export default {
   name: "List",
   props: {
@@ -36,13 +37,8 @@ export default {
     ...mapState({
       data: (state) => state.listData,
     }),
-
-    data() {
-      return this.$store.state.listData;
-    },
   },
   created() {
-    console.log(this.headerTitle);
     this.fetchData();
   },
   methods: {
