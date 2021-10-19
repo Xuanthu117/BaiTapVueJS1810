@@ -8,7 +8,9 @@
     </div>
     <div class="content">
       <div class="list-header">
-        <div class="header-text" v-for="item in headerTitle" :key="item.name">{{ item.name }}</div>
+        <div class="header-text" v-for="item in headerTitle" :key="item.name">
+          {{ item.name }}
+        </div>
       </div>
       <ul class="list">
         <li class="list-item" v-for="item in data" :key="item.id">
@@ -23,6 +25,7 @@
 </template>
 <script>
 import axios from "axios";
+import { mapState } from "vuex";
 const link = "https://jsonplaceholder.typicode.com/posts";
 export default {
   name: "List",
@@ -30,6 +33,10 @@ export default {
     headerTitle: Array,
   },
   computed: {
+    ...mapState({
+      data: (state) => state.listData,
+    }),
+
     data() {
       return this.$store.state.listData;
     },
