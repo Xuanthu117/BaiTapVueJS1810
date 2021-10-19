@@ -1,5 +1,5 @@
-export default{
-    addList(state,listData) {
-        state.listData = listData;
-    }
-}
+export default {
+  addList(state, listData) {
+    state.listData = listData;
+  },
+};

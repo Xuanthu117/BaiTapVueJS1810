@@ -1,4 +1,3 @@
 export default {
-    listData: state =>state.listData,
-    
-}
+  listData: (state) => state.listData,
+};

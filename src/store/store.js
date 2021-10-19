@@ -6,10 +6,10 @@ import mutations from './mutations';
 import actions from './actions';
 
 export default new Vuex.Store({
-    state:{
-        listData:[]
-    },
-    getters, 
-    mutations, 
-    actions,
-})
+  state: {
+    listData: [],
+  },
+  getters,
+  mutations,
+  actions,
+});
