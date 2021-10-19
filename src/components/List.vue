@@ -24,9 +24,8 @@
   </div>
 </template>
 <script>
-import axios from "axios";
 import { mapState } from "vuex";
-const link = "https://jsonplaceholder.typicode.com/posts";
+
 
 export default {
   name: "List",
@@ -43,16 +42,7 @@ export default {
   },
   methods: {
     fetchData() {
-      const self = this;
-      axios
-        .get(link)
-        .then(function(response) {
-          self.$store.dispatch("addList", response.data);
-        })
-        .catch(function(error) {
-          console.log(error);
-        })
-        .then(function() {});
+     this.$store.dispatch("getList");
     },
   },
 };
