@@ -1,5 +1,5 @@
 export default {
-  addList({commit}, listData) {
-    commit('addList', listData);
+  addList({ commit }, listData) {
+    commit("addList", listData);
   },
 };
