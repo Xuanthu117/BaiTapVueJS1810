@@ -1,11 +1,13 @@
 <template>
   <div id="app">
-    <div class="">
-      <h2>Danh sách</h2>
-      <br />
-      <!-- <small> Danh sách có {{ listDataLength }} bản ghi</small> -->
+    <div class="container">
+      <div class="header">
+        <b>Danh sách</b>
+
+        <small> Danh sách có {{ listDataLength }} bản ghi</small>
+      </div>
+      <Table :headerTitle="listHeader" />
     </div>
-    <Table :headerTitle="listHeader" />
   </div>
 </template>
 
@@ -22,8 +24,7 @@ export default {
       listHeader: (state) => state.listHeader,
     }),
     listDataLength: function() {
-      console.log(this.$store.getter.listDataLength);
-      return this.$store.getter.listDataLength;
+      return this.$store.getters.listDataLength;
     },
   },
   created() {},

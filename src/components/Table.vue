@@ -1,9 +1,7 @@
 <template>
-  <div class="container">
-    <div class="content">
-      <Headers :headeTitles="listHeader"></Headers>
-      <Lists></Lists>
-    </div>
+  <div class="">
+    <Headers :headeTitles="listHeader"></Headers>
+    <Lists></Lists>
   </div>
 </template>
 <script>
