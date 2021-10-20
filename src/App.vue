@@ -1,16 +1,16 @@
 <template>
   <div id="app">
-    <List :headerTitle="listHeader" />
+    <Table :headerTitle="listHeader" />
   </div>
 </template>
 
 <script>
-import List from "./components/List.vue";
+import Table from "./components/Table.vue";
 import { mapState } from "vuex";
 export default {
   name: "App",
   components: {
-    List,
+    Table,
   },
   computed: {
     ...mapState({
