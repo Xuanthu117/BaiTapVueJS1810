@@ -1,5 +1,10 @@
 <template>
   <div id="app">
+    <div class="">
+      <h2>Danh sách</h2>
+      <br />
+      <!-- <small> Danh sách có {{ listDataLength }} bản ghi</small> -->
+    </div>
     <Table :headerTitle="listHeader" />
   </div>
 </template>
@@ -16,6 +21,10 @@ export default {
     ...mapState({
       listHeader: (state) => state.listHeader,
     }),
+    listDataLength: function() {
+      console.log(this.$store.getter.listDataLength);
+      return this.$store.getter.listDataLength;
+    },
   },
   created() {},
 };
