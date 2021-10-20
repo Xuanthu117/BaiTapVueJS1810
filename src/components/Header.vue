@@ -6,14 +6,10 @@
   </div>
 </template>
 <script>
-import { mapState } from "vuex";
 export default {
   name: "Headers",
-  computed: {
-    // try mapState
-    ...mapState({
-      listHeader: (state) => state.listHeader,
-    }),
+  props: {
+    headeTitles: Array,
   },
 };
 </script>
