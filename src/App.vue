@@ -1,10 +1,16 @@
 <template>
   <div id="app">
     <div class="container">
-      <div class="header">
-        <b>Danh sách</b>
+      <div
+        class=""
+        style="display:flex; flex-direction:row; justify-content:space-between; align-items:center"
+      >
+        <div class="header">
+          <b>Danh sách</b>
+          <small> Danh sách có {{ listDataLength }} bản ghi</small>
+        </div>
 
-        <small> Danh sách có {{ listDataLength }} bản ghi</small>
+        <button class="btn" @click="deleteElement">Delete element</button>
       </div>
       <Table :headerTitle="listHeader" />
     </div>
@@ -28,6 +34,11 @@ export default {
     },
   },
   created() {},
+  methods: {
+    deleteElement: function() {
+      this.$store.dispatch("deleteElement");
+    },
+  },
 };
 </script>
 
