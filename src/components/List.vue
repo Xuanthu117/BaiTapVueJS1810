@@ -24,16 +24,18 @@
   </div>
 </template>
 <script>
-import { mapState } from "vuex";
+import { mapGetters, mapState } from "vuex";
 export default {
   name: "List",
   props: {
     headerTitle: Array,
   },
   computed: {
+    // try mapState
     ...mapState({
       data: (state) => state.listData,
     }),
+    ...mapGetters({}),
   },
   created() {
     this.fetchData();

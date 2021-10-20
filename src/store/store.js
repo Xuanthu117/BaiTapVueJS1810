@@ -8,6 +8,12 @@ import actions from "./actions";
 export default new Vuex.Store({
   state: {
     listData: [],
+    listHeader: [
+      { name: "Id" },
+      { name: "UserId" },
+      { name: "Title" },
+      { name: "Description" },
+    ],
   },
   getters,
   mutations,
