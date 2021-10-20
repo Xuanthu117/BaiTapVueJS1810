@@ -12,4 +12,7 @@ export default {
       })
       .then(function() {});
   },
+  deleteElement({ commit }) {
+    commit("deleteElement");
+  },
 };
