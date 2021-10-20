@@ -17,7 +17,6 @@ export default {
   name: "List",
   components: { Headers, Lists },
   computed: {
-    // try mapState
     ...mapState({
       listHeader: (state) => state.listHeader,
     }),

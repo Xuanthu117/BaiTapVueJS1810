@@ -1,6 +1,6 @@
 <template>
   <div class="list-header">
-    <div class="header-text" v-for="item in listHeader" :key="item.name">
+    <div class="header-text" v-for="item in headeTitles" :key="item.name">
       {{ item.name }}
     </div>
   </div>
