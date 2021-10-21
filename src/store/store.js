@@ -4,17 +4,10 @@ Vue.use(Vuex);
 import getters from "./getter.js";
 import mutations from "./mutations";
 import actions from "./actions";
+import state from "./state";
 
 export default new Vuex.Store({
-  state: {
-    listData: [],
-    listHeader: [
-      { name: "Id" },
-      { name: "UserId" },
-      { name: "Title" },
-      { name: "Description" },
-    ],
-  },
+  state,
   getters,
   mutations,
   actions,
