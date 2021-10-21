@@ -111,3 +111,178 @@ html {
   align-items: flex-start;
   margin-bottom: 15px;
 }
+
+/* =============== */
+.table {
+  width: 100%;
+  margin: 10px;
+  background-color: #fff;
+  border-collapse: collapse;
+  box-shadow: 0 5px 5px #ccc;
+  border-radius: 5px;
+}
+.table td {
+  padding: 5px;
+  border: 1px solid #ccc;
+}
+.bold {
+  font-weight: bold;
+}
+
+/* =============== */
+.progressBar {
+  background-color: white;
+  box-shadow: 3px 5px 5px #ccc;
+  border-radius: 10px;
+  overflow: hidden;
+}
+.indicator {
+  height: 15px;
+  background-color: blueviolet;
+  transition: width 200ms ease-in-out;
+}
+.tab-header {
+  margin: 10px;
+  display: flex;
+  justify-content: space-around;
+  flex-direction: row;
+}
+.tab-article {
+  cursor: pointer;
+  align-items: flex-end;
+  display: flex;
+  padding: 5px 10px;
+  border-radius: 7px;
+  background: white;
+  transition: border-color 200ms ease-in-out;
+  transition: color 0.2s ease-in-out;
+  border: none;
+
+  box-shadow: 3px 5px 5px #ccc;
+}
+.tab-article.active {
+  border: 1px solid blueviolet;
+}
+.tab-article.done {
+  background-color: blueviolet;
+  color: white;
+}
+.article-step {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  text-align: center;
+  width: 25px;
+  height: 25px;
+  margin-right: 5px;
+  font-weight: bold;
+  border-radius: 50%;
+}
+.tab-panel {
+  background-color: #fff;
+  margin: 0;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  padding: 15px;
+  box-shadow: 3px 3px 5px #ccc;
+}
+
+.tab-panel > div {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+}
+.question,
+.answer {
+  position: relative;
+
+  padding: 3px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+.question {
+  width: 100px;
+}
+.answer {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  margin-left: 15px;
+}
+.input {
+  width: 100%;
+  background-color: #fff;
+  padding: 5px 10px;
+  border-radius: 5px;
+  box-shadow: none;
+  border: 1px solid #ccc;
+  transition: border-color 0.5s ease-in-out;
+}
+.input:focus {
+  border: 1px solid blueviolet;
+  outline: none;
+}
+.tab-button {
+  padding: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.answer-error {
+  list-style-type: none;
+  display: flex;
+  flex-direction: column;
+}
+.dropdown {
+  position: relative;
+}
+.dropdown-box {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 30px;
+  background-color: #fff;
+  padding: 5px 10px;
+  border-radius: 5px;
+  box-shadow: none;
+  border: 1px solid #ccc;
+  transition: border-color 0.5s ease-in-out;
+}
+.dropdown-list {
+  overflow: hidden;
+  display: none;
+  width: inherit;
+  position: absolute;
+  top: 30px;
+  left: 0;
+  list-style-type: none;
+  align-items: flex-start;
+  flex-direction: column;
+  background: white;
+  box-shadow: 3px 3px 5px #ccc;
+  padding: 3px;
+  margin: 0;
+  border-radius: 5px;
+}
+.dropdown-list li {
+  padding: 10px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  width: 200px;
+  cursor: pointer;
+}
+
+.dropdown-box li:hover {
+  background-color: #f6f7f2;
+}
+.message-warn {
+  text-align: right;
+  color: red;
+}
