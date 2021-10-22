@@ -55,6 +55,8 @@ export default {
   methods: {
     Submit: function() {
       console.log(this.formData);
+      this.$store.dispatch("nextStep");
+      this.$store.dispatch("resetForm");
     },
     resetFrom: function() {
       this.$store.dispatch("resetForm");

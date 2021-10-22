@@ -16,6 +16,11 @@
                 <Form1></Form1>
                 <Form2></Form2>
                 <Form3></Form3>
+                <v-container v-show="currentStep > articles.length">
+                  <h1>
+                    Thanks for submitting!
+                  </h1>
+                </v-container>
               </v-col>
             </v-container>
           </v-card>

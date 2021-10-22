@@ -18,7 +18,7 @@ export default {
       id: 2,
       name: "Bài tập 2",
       description: "vue-Router và form Validate",
-      status: false,
+      status: true,
       link: "/BaiTap2",
     },
   ],
