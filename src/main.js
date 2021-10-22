@@ -10,8 +10,6 @@ import { ValidationObserver } from "vee-validate";
 Vue.component("ValidationProvider", ValidationProvider);
 Vue.component("ValidationObserver", ValidationObserver);
 
-import Vuelidate from "vuelidate";
-Vue.use(Vuelidate);
 Vue.use(VueRouter);
 Vue.use(Vuex);
 

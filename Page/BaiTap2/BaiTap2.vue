@@ -51,14 +51,7 @@ export default {
       return this.articles.length;
     },
   },
-  methods: {
-    Submit: function() {
-      console.log(this.formData);
-    },
-    Reset: function() {
-      this.$store.dispatch("ResetForm");
-    },
-  },
+  methods: {},
   watch: {},
 };
 </script>
