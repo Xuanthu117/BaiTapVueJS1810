@@ -36,7 +36,9 @@ export default {
   name: "BaiTap2",
   components: { progressBar, Tab, Form1, Form2, Form3 },
   data() {
-    return { title: "BaiTap2" };
+    return {
+      title: "BaiTap2",
+    };
   },
   computed: {
     ...mapState({

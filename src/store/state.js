@@ -21,6 +21,13 @@ export default {
       status: true,
       link: "/BaiTap2",
     },
+    {
+      id: 3,
+      name: "Bài tập 3",
+      description: "vue-Router và form Validate",
+      status: false,
+      link: "/BaiTap3",
+    },
   ],
   currentStep: 1,
   formData: {
@@ -36,4 +43,5 @@ export default {
     { step: 2, name: "About your Company" },
     { step: 3, name: "Finishing Up" },
   ],
+  PROVINCES: [],
 };

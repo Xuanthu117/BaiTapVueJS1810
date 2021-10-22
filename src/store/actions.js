@@ -24,4 +24,19 @@ export default {
   resetForm({ commit }) {
     commit("resetForm");
   },
+  GET_PROVINCE({ commit }) {
+    const link = "https://provinces.open-api.vn/api/";
+    axios
+      .get(link)
+      .then(function(response) {
+        commit("ADD_PROVINCE", response.data);
+      })
+      .catch(function(error) {
+        console.log(error);
+      })
+      .then(function() {});
+  },
+  REMOVE_PROVINCE({ commit }, provinceID) {
+    commit("REMOVE_PROVINCE", provinceID);
+  },
 };

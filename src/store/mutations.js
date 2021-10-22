@@ -23,4 +23,14 @@ export default {
         isAccepted: false,
       });
   },
+  ADD_PROVINCE(state, data) {
+    state.PROVINCES = data;
+  },
+  REMOVE_PROVINCE(state, id) {
+    state.PROVINCES.map((province) => {
+      if (province.code == id) {
+        province.isChecked = !province.isChecked;
+      }
+    });
+  },
 };
