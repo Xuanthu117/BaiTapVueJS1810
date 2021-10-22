@@ -18,6 +18,9 @@ export default {
   nextStep({ commit }) {
     commit("nextStep");
   },
+  previousStep({ commit }) {
+    commit("previousStep");
+  },
   resetForm({ commit }) {
     commit("resetForm");
   },

@@ -6,7 +6,14 @@
           <ValidationProvider>
             <v-row> From where did you hear about us?</v-row>
             <v-row>
-              <v-select :items="items" label="" solo></v-select>
+              <v-select
+                v-model="data.source"
+                :items="items"
+                label=" From where did you hear about us?"
+                menu-props="auto"
+                hide-details
+                single-line
+              ></v-select>
             </v-row>
           </ValidationProvider>
           <ValidationProvider rule="required">
@@ -36,7 +43,7 @@ export default {
   },
   data() {
     return {
-      items: ["Friens", " Website", "NewsPaper", "Other"],
+      items: ["Friends", " Website", "NewsPaper", "Other"],
     };
   },
   computed: {

@@ -5,11 +5,16 @@
         <v-col cols="12" sm="4" md="4">
           <progressBar :progress="progress"></progressBar>
           <Tab></Tab>
-          <v-container>
-            <Form1 :formData="formData"></Form1>
-            <Form2 :formData="formData"></Form2>
-            <Form3 :formData="formData"></Form3>
-          </v-container>
+
+          <v-card elevation="4">
+            <v-container>
+              <v-col fluid>
+                <Form1></Form1>
+                <Form2></Form2>
+                <Form3></Form3>
+              </v-col>
+            </v-container>
+          </v-card>
         </v-col>
       </v-row>
     </v-container>
@@ -26,16 +31,7 @@ export default {
   name: "BaiTap2",
   components: { progressBar, Tab, Form1, Form2, Form3 },
   data() {
-    return {
-      formData: {
-        name: "Nguy",
-        email: "1@gmail.com",
-        companyName: "aaa",
-        employees: 0,
-        source: "",
-        isAccepted: false,
-      },
-    };
+    return {};
   },
   computed: {
     ...mapState({
