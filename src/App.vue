@@ -1,25 +1,16 @@
 <template>
   <div>
     <v-app>
-      <!-- <Table :headerTitle="listHeader" /> -->
-      <!-- <Home></Home> -->
-      <BaiTap2></BaiTap2>
+      <v-container align="center"> <router-view></router-view></v-container>
     </v-app>
   </div>
 </template>
 
 <script>
-// import Home from "../Page/Home/Home.vue";
-// import vButton from "../Page/BaiTap2/component/Button.vue";
-import BaiTap2 from "../Page/BaiTap2/BaiTap2.vue";
 import { mapState } from "vuex";
 export default {
   name: "App",
-  components: {
-    // Home,
-    // vButton,
-    BaiTap2,
-  },
+  components: {},
 
   computed: {
     ...mapState({

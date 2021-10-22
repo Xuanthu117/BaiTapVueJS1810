@@ -15,4 +15,10 @@ export default {
   deleteElement({ commit }) {
     commit("deleteElement");
   },
+  nextStep({ commit }) {
+    commit("nextStep");
+  },
+  resetForm({ commit }) {
+    commit("resetForm");
+  },
 };

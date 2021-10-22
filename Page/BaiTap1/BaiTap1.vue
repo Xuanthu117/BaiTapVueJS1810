@@ -21,7 +21,7 @@
 import Table from "../BaiTap1/Component/Table.vue";
 import { mapState } from "vuex";
 export default {
-  name: "App",
+  name: "BaiTap1",
   components: {
     Table,
   },

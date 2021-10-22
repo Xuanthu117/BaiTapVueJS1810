@@ -3,130 +3,12 @@
     <v-container fluid>
       <v-row justify="center">
         <v-col cols="12" sm="4" md="4">
-          <div class="progressBar">
-            <div class="indicator" :style="{ width: progress }"></div>
-          </div>
-          <div class="tab-header">
-            <div
-              class="tab-article"
-              v-for="article in articles"
-              :key="article.step"
-              :class="{
-                active: article.step >= currentStep,
-                done: article.step < currentStep,
-              }"
-            >
-              <div class="article-step">{{ article.step }}</div>
-              <div class="article-name">{{ article.name }}</div>
-            </div>
-          </div>
+          <progressBar :progress="progress"></progressBar>
+          <Tab></Tab>
           <v-container>
-            <ValidationObserver v-slot="{ invalid }">
-              <form v-show="currentStep == 1">
-                <ValidationProvider
-                  name="Name"
-                  rules="required|alpha"
-                  v-slot="{ errors }"
-                >
-                  <v-row>
-                    <v-col md="3">Name</v-col>
-                    <v-col md="9">
-                      <input
-                        type="text"
-                        class="input"
-                        v-model="formData.name"
-                      />
-                      <small class="message-warn ">{{ errors[0] }}</small>
-                    </v-col>
-                  </v-row>
-                </ValidationProvider>
-                <ValidationProvider
-                  name="Email"
-                  rules="required|email"
-                  v-slot="{ errors }"
-                >
-                  <v-row>
-                    <v-col md="3">Your Email</v-col>
-                    <v-col md="9">
-                      <input
-                        type="text"
-                        class="input"
-                        v-model="formData.email"
-                      />
-                      <small class="message-warn ">{{ errors[0] }}</small>
-                    </v-col>
-                  </v-row>
-                </ValidationProvider>
-                <v-col fluid align="right">
-                  <v-btn @click="nextStep" :disabled="invalid">Tiếp tục</v-btn>
-                </v-col>
-              </form>
-            </ValidationObserver>
-            <ValidationObserver v-slot="{ invalid }">
-              <form v-show="currentStep == 2">
-                <ValidationProvider
-                  name="Name"
-                  rules="required|alpha"
-                  v-slot="{ errors }"
-                >
-                  <v-row>
-                    <v-col md="3">Company Name</v-col>
-                    <v-col md="9">
-                      <input
-                        type="text"
-                        class="input"
-                        v-model="formData.companyName"
-                      />
-                      <small class="message-warn ">{{ errors[0] }}</small>
-                    </v-col>
-                  </v-row>
-                </ValidationProvider>
-                <ValidationProvider
-                  name="Email"
-                  rules="required"
-                  v-slot="{ errors }"
-                >
-                  <v-row>
-                    <v-col md="3">Number of Company employees</v-col>
-                    <v-col md="9">
-                      <input
-                        type="number"
-                        class="input"
-                        v-model="formData.employees"
-                      />
-                      <small class="message-warn ">{{ errors[0] }}</small>
-                    </v-col>
-                  </v-row>
-                </ValidationProvider>
-
-                <v-col fluid align="right">
-                  <v-btn @click="nextStep" :disabled="invalid">Tiếp tục</v-btn>
-                </v-col>
-              </form>
-            </ValidationObserver>
-            <ValidationObserver v-slot="{}">
-              <form @submit.prevent="submit" v-show="currentStep == 3">
-                <ValidationProvider>
-                  <v-row> From where did you hear about us?</v-row>
-                  <v-row>
-                    <v-select :items="items" label="" solo></v-select>
-                  </v-row>
-                </ValidationProvider>
-                <ValidationProvider rule="required">
-                  <v-row>
-                    <v-checkbox
-                      v-model="formData.isAccepted"
-                      :label="'I Accept terms and conditions'"
-                    ></v-checkbox
-                  ></v-row>
-                  <v-col fluid align="right">
-                    <v-btn @click="Submit" :disabled="!formData.isAccepted"
-                      >Submit</v-btn
-                    >
-                  </v-col>
-                </ValidationProvider>
-              </form>
-            </ValidationObserver>
+            <Form1 :formData="formData"></Form1>
+            <Form2 :formData="formData"></Form2>
+            <Form3 :formData="formData"></Form3>
           </v-container>
         </v-col>
       </v-row>
@@ -134,12 +16,17 @@
   </div>
 </template>
 <script>
+import progressBar from "../../Page/BaiTap2/component/progressBar.vue";
+import Tab from "../../Page/BaiTap2/component/Tab.vue";
+import Form1 from "../../Page/BaiTap2/component/Form_1.vue";
+import Form2 from "../../Page/BaiTap2/component/Form_2.vue";
+import Form3 from "../../Page/BaiTap2/component/Form_3.vue";
+import { mapState } from "vuex";
 export default {
-  name: "Baitap2",
-
+  name: "BaiTap2",
+  components: { progressBar, Tab, Form1, Form2, Form3 },
   data() {
     return {
-      items: ["Friens", " Website", "NewsPaper", "Other"],
       formData: {
         name: "Nguy",
         email: "1@gmail.com",
@@ -148,20 +35,18 @@ export default {
         source: "",
         isAccepted: false,
       },
-      currentStep: 1,
-
-      articles: [
-        { step: 1, name: "About you" },
-        { step: 2, name: "About your Company" },
-        { step: 3, name: "Finishing Up" },
-      ],
     };
   },
   computed: {
+    ...mapState({
+      articles: (state) => state.articles,
+      currentStep: (state) => state.currentStep,
+    }),
+
     progress: function() {
-      return (this.currentStep / this.totalSteps) * 100 + "%";
+      return (this.currentStep - 1) / this.articles.length;
     },
-    totalSteps: function() {
+    totalStep: function() {
       return this.articles.length;
     },
   },
@@ -179,14 +64,7 @@ export default {
       console.log(this.formData);
     },
     Reset: function() {
-      this.formData = {
-        name: "",
-        email: "",
-        companyName: "",
-        employees: 0,
-        source: "",
-        isAccepted: false,
-      };
+      this.$store.dispatch("ResetForm");
     },
   },
   watch: {},

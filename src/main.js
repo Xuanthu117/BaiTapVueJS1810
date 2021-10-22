@@ -17,17 +17,11 @@ Vue.use(Vuex);
 
 Vue.config.productionTip = false;
 
-import BaiTap2 from "../Page/BaiTap2/BaiTap2.vue";
-import BaiTap1 from "../Page/BaiTap1/BaiTap1.vue";
-const router = new VueRouter({
-  routes: [
-    { path: "/BaiTap1", component: BaiTap2 },
-    { path: "/BaiTap1", component: BaiTap1 },
-  ],
-});
+import router from "../src/router/router";
 new Vue({
   render: (h) => h(App),
   store,
-  router: router,
+  router,
   vuetify,
+  el: "#app",
 }).$mount("#app");
