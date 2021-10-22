@@ -24,11 +24,11 @@ export default {
   ],
   currentStep: 1,
   formData: {
-    name: "Nguy",
-    email: "1@gmail.com",
-    companyName: "aaa",
+    name: "",
+    email: "",
+    companyName: "",
     employees: 0,
-    source: "",
+    source: "Friends",
     isAccepted: false,
   },
   articles: [
