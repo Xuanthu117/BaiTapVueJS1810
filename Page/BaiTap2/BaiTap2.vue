@@ -1,11 +1,15 @@
 <template>
   <div>
     <v-container fluid>
+      <v-row align="center">
+        <v-col>
+          <h4>{{ title }}</h4>
+        </v-col>
+      </v-row>
       <v-row justify="center">
         <v-col cols="12" sm="4" md="4">
           <progressBar :progress="progress"></progressBar>
           <Tab></Tab>
-
           <v-card elevation="4">
             <v-container>
               <v-col fluid>
@@ -26,12 +30,13 @@ import Tab from "../../Page/BaiTap2/component/Tab.vue";
 import Form1 from "../../Page/BaiTap2/component/Form_1.vue";
 import Form2 from "../../Page/BaiTap2/component/Form_2.vue";
 import Form3 from "../../Page/BaiTap2/component/Form_3.vue";
+
 import { mapState } from "vuex";
 export default {
   name: "BaiTap2",
   components: { progressBar, Tab, Form1, Form2, Form3 },
   data() {
-    return {};
+    return { title: "BaiTap2" };
   },
   computed: {
     ...mapState({
@@ -47,15 +52,6 @@ export default {
     },
   },
   methods: {
-    gotoStep: function(step) {
-      this.currentStep = step;
-    },
-    backStep: function() {
-      this.currentStep = this.currentStep - 1;
-    },
-    nextStep: function() {
-      this.currentStep = this.currentStep + 1;
-    },
     Submit: function() {
       console.log(this.formData);
     },
