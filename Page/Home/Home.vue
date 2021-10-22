@@ -12,12 +12,16 @@
           </tr>
         </thead>
         <tbody>
-          <tr v-for="item in data" :key="item.id">
+          <tr v-for="item in datas" :key="item.id">
             <td>{{ item.id }}</td>
             <td class="bold">{{ item.name }}</td>
             <td>{{ item.description }}</td>
             <td>{{ item.status ? "Hoàn thành" : "Chưa hoàn thành" }}</td>
-            <td><a :href="item.link">link</a></td>
+            <td>
+              <router-link v-bind:to="item.link">
+                link
+              </router-link>
+            </td>
           </tr>
         </tbody>
       </table>
@@ -30,9 +34,25 @@ import { mapState } from "vuex";
 export default {
   name: "Home",
   components: {},
+  data() {
+    return {
+      headers: [
+        {
+          text: "STT",
+          align: "start",
+          sortable: false,
+          value: "id",
+        },
+        { text: "Tên bài tập", value: "name" },
+        { text: "Mô tả", value: "description" },
+        { text: "trạng thái", value: "status" },
+        { text: "link", value: "link" },
+      ],
+    };
+  },
   computed: {
     ...mapState({
-      data: (state) => state.ListHomeWork,
+      datas: (state) => state.ListHomeWork,
     }),
     listDataLength: function() {
       return 0;
