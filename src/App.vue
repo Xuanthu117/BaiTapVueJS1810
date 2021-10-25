@@ -1,7 +1,7 @@
 <template>
   <div>
     <v-app>
-      <v-container align="center">
+      <v-container align="flex-start" justify="center">
         <router-view></router-view>
       </v-container>
     </v-app>

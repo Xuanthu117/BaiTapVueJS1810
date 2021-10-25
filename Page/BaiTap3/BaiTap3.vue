@@ -8,16 +8,9 @@
             class="dropdown-select"
             :class="{ open: isExpanded }"
           >
-            <div class="province-list">
-              <div
-                v-if="provincesChecked.length === 0"
-                class="province-placeholder"
-              >
-                Chọn tỉnh thành
-                <v-icon class="icon" x-small>mdi-chevron-down</v-icon>
-              </div>
-
-              <Chips :datas="provincesChecked"></Chips>
+            <div class="province-placeholder">
+              Chọn tỉnh thành
+              <v-icon class="icon" x-small>mdi-chevron-down</v-icon>
             </div>
           </div>
           <div class="dropdown-box" v-show="isExpanded">
@@ -34,6 +27,9 @@
               <button class="button cancel" @click="cancelProvince">Hủy</button>
             </div>
           </div>
+        </div>
+        <div class="dropdown-select" v-show="provincesChecked.length > 0">
+          <Chips :datas="provincesChecked"></Chips>
         </div>
       </v-col>
     </v-row>
@@ -82,8 +78,12 @@ export default {
   },
   watch: {
     provincesChecked: function(val, old) {
-      if (val.length !== old.length) {
-        this.isStateChange = true;
+      if (this.isExpanded) {
+        if (val.length !== old.length) {
+          this.isStateChange = true;
+        } else {
+          this.isStateChange = false;
+        }
       } else {
         this.isStateChange = false;
       }
