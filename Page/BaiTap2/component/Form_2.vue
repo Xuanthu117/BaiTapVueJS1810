@@ -29,7 +29,7 @@
       </ValidationProvider>
 
       <v-col fluid align="right">
-        <v-btn @click="previousStep">Quay lai</v-btn>
+        <v-btn @click="previousStep" plain>Quay lai</v-btn>
         <v-btn @click="nextStep" :disabled="invalid">Tiếp tục</v-btn>
       </v-col>
     </form>

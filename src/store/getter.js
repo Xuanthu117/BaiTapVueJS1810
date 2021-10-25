@@ -5,4 +5,6 @@ export default {
   currentStep: (state) => state.currentStep,
   articles: (state) => state.articles,
   formData: (state) => state.formData,
+  PROVINCES_CHECKED: (state) =>
+    state.CURRENT_PROVINCES.filter((province) => province.isChecked === true),
 };

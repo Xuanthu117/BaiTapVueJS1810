@@ -25,7 +25,7 @@
             ></v-row>
             <v-col fluid align="right">
               <v-btn @click="resetFrom">Reset</v-btn>
-              <v-btn @click="Submit" :disabled="!data.isAccepted">Submit</v-btn>
+              <v-btn @click="submit" :disabled="!data.isAccepted">Submit</v-btn>
             </v-col>
           </ValidationProvider>
         </form>
@@ -37,10 +37,6 @@
 <script>
 import { mapState } from "vuex";
 export default {
-  name: "Form1",
-  props: {
-    formData: Object,
-  },
   data() {
     return {
       items: ["Friends", " Website", "NewsPaper", "Other"],
@@ -53,8 +49,8 @@ export default {
     }),
   },
   methods: {
-    Submit: function() {
-      console.log(this.formData);
+    submit: function() {
+      console.log(this.data);
     },
     resetFrom: function() {
       this.$store.dispatch("resetForm");
