@@ -48,7 +48,7 @@ export default {
   name: "BaiTap3",
   components: { List, Chips },
   data() {
-    return { checkbox: true, isExpanded: false, isStateChange: false };
+    return { isExpanded: false, isStateChange: false };
   },
   methods: {
     showDropdown: function() {
@@ -72,7 +72,7 @@ export default {
     },
   },
   computed: {
-    ...mapState(["CURRENT_PROVINCES", "CHECKED_PROVINCES"]),
+    ...mapState(["CURRENT_PROVINCES"]),
     ...mapGetters({
       provincesChecked: "PROVINCES_CHECKED",
     }),

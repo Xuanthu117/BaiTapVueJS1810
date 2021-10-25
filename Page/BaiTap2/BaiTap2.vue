@@ -27,9 +27,9 @@
 <script>
 import progressBar from "../../Page/BaiTap2/component/progressBar.vue";
 import Tab from "../../Page/BaiTap2/component/Tab.vue";
-import Form1 from "../../Page/BaiTap2/component/Form_1.vue";
-import Form2 from "../../Page/BaiTap2/component/Form_2.vue";
-import Form3 from "../../Page/BaiTap2/component/Form_3.vue";
+import Form1 from "./component/AboutYou.vue";
+import Form2 from "./component/AboutCompany.vue";
+import Form3 from "./component/FinishingUp.vue";
 
 import { mapState } from "vuex";
 export default {
