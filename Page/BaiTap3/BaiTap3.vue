@@ -2,100 +2,98 @@
   <v-container align="center">
     <v-row align="center">
       <v-col md="4">
-        <v-card>
-          <div class="dropdown">
-            <div @click="showDropdown" class="dropdown-select">
-              <div class="province-list">
-                <div
-                  v-if="provincesChecked.length == 0"
-                  class="province-placeholder"
-                >
-                  Chọn tỉnh thành
-                </div>
-                <div class="province-items">
-                  <div
-                    class="province-item"
-                    v-for="province in provincesChecked"
-                    :key="province.id"
-                  >
-                    <small class="text">{{ province.name }}</small>
-                    <v-icon
-                      @click.stop="removeThisProvince(province.code)"
-                      :x-small="true"
-                      >mdi-close</v-icon
-                    >
-                  </div>
-                </div>
+        <div class="dropdown">
+          <div
+            @click="showDropdown"
+            class="dropdown-select"
+            :class="{ open: isExpanded }"
+          >
+            <div class="province-list">
+              <div
+                v-if="provincesChecked.length === 0"
+                class="province-placeholder"
+              >
+                Chọn tỉnh thành
+                <v-icon class="icon" x-small>mdi-chevron-down</v-icon>
               </div>
-              <v-icon>mdi-chevron-down</v-icon>
-            </div>
-            <div class="dropdown-box" v-show="isExpanded">
-              <ul class="dropdown-list">
-                <li
-                  class="dropdown-item"
-                  v-for="province in provinces"
-                  :key="province.id"
-                >
-                  <v-checkbox
-                    v-model="province.isChecked"
-                    dense
-                    :hide-details="true"
-                    :label="province.name"
-                  >
-                  </v-checkbox>
-                </li>
-              </ul>
-              <div class="dropdown-button">
-                <v-btn small @click="closeDropdown">Đồng ý</v-btn>
-                <v-btn small @click="closeDropdown" dense>Hủy</v-btn>
-              </div>
+
+              <Chips :datas="provincesChecked"></Chips>
             </div>
           </div>
-        </v-card></v-col
-      >
+          <div class="dropdown-box" v-show="isExpanded">
+            <List :datas="CURRENT_PROVINCES"></List>
+            <div v-show="CURRENT_PROVINCES.length == 0">No data available</div>
+            <div class="dropdown-button">
+              <button
+                class="button save"
+                @click="saveProvince"
+                :disabled="!isStateChange"
+              >
+                Đồng ý
+              </button>
+              <button class="button cancel" @click="cancelProvince">Hủy</button>
+            </div>
+          </div>
+        </div>
+      </v-col>
     </v-row>
   </v-container>
 </template>
 <script>
-import { mapState } from "vuex";
+import { mapGetters, mapState } from "vuex";
+
+import List from "./component/Lists.vue";
+import Chips from "./component/Chips.vue";
 export default {
   name: "BaiTap3",
+  components: { List, Chips },
   data() {
-    return { checkbox: true, isExpanded: false };
+    return { checkbox: true, isExpanded: false, isStateChange: false };
   },
   methods: {
     showDropdown: function() {
-      this.isExpanded = !this.isExpanded;
-    },
-    fetchData() {
-      this.$store.dispatch("GET_PROVINCE");
-      console.log(this.provinces);
-    },
-    removeThisProvince(id) {
-      console.log(id);
-      this.$store.dispatch("REMOVE_PROVINCE", id);
+      this.isExpanded = true;
     },
     closeDropdown: function() {
       this.isExpanded = false;
+      this.isStateChange = false;
+    },
+    fetchData() {
+      this.$store.dispatch("GET_PROVINCE");
+    },
+
+    saveProvince: function() {
+      this.$store.dispatch("SAVE_PROVINCE");
+      this.closeDropdown();
+    },
+    cancelProvince: function() {
+      this.$store.dispatch("CANCEL_PROVINCE");
+      this.closeDropdown();
     },
   },
   computed: {
-    ...mapState({
-      provinces: (state) => state.PROVINCES,
-      provincesChecked: function() {
-        return this.$store.getters.PROVINCES_CHECKED;
-      },
-      provincesAccept: function() {
-        this.isExpanded = false;
-      },
-      provincesCancle: function() {
-        this.isExpanded = false;
-      },
+    ...mapState(["CURRENT_PROVINCES", "CHECKED_PROVINCES"]),
+    ...mapGetters({
+      provincesChecked: "PROVINCES_CHECKED",
     }),
   },
   created() {
     this.fetchData();
   },
+  watch: {
+    provincesChecked: function(val, old) {
+      if (val.length !== old.length) {
+        this.isStateChange = true;
+      } else {
+        this.isStateChange = false;
+      }
+    },
+  },
 };
 </script>
-<style scoped></style>
+<style scoped>
+html,
+body {
+  font-family: Noto, Arial;
+}
+</style>

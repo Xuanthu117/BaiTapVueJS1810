@@ -29,7 +29,7 @@ export default {
     axios
       .get(link)
       .then(function(response) {
-        commit("ADD_PROVINCE", response.data);
+        commit("GET_PROVINCES", response.data);
       })
       .catch(function(error) {
         console.log(error);
@@ -37,6 +37,13 @@ export default {
       .then(function() {});
   },
   REMOVE_PROVINCE({ commit }, provinceID) {
+    console.log("remove this", provinceID);
     commit("REMOVE_PROVINCE", provinceID);
+  },
+  SAVE_PROVINCE({ commit }) {
+    commit("SAVE_PROVINCE");
+  },
+  CANCEL_PROVINCE({ commit }) {
+    commit("CANCEL_PROVINCE");
   },
 };

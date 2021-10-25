@@ -43,5 +43,6 @@ export default {
     { step: 2, name: "About your Company" },
     { step: 3, name: "Finishing Up" },
   ],
-  PROVINCES: [],
+  NEW_PROVINCES: [],
+  CURRENT_PROVINCES: [],
 };

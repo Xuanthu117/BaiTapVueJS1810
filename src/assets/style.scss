@@ -1,4 +1,5 @@
 $box-shadow:2px 2px 5px #ccc;
+$primary: #007BC3;
 
 #app {
     font-family: roboto, arial, helvetica, sans-serif;
@@ -264,6 +265,7 @@ html {
 
 .dropdown {
     position: relative;
+    width: 480px;
 }
 
 .dropdown-select {
@@ -271,23 +273,41 @@ html {
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    padding: 7px 10px
+    padding: 8px;
+    min-height: 48px;
+    width: 480px;
+    box-shadow: $box-shadow;
+    border-radius: 4px;
+    border: 1px solid transparent;
+
+    .icon {
+        transform: rotate(0);
+        transition: transform 500ms ease-in-out;
+    }
+
+    &.open {
+        border: 1px solid $primary;
+
+        box-shadow: 0 0 8px #007cc352;
+
+        .icon {
+            transform: rotate(180deg);
+        }
+    }
+
 }
 
 .dropdown-box {
     display: flex;
     flex-direction: column;
-
     width: 100%;
     position: absolute;
-    top: 100%;
+    top: calc(100% + 2px);
     left: 0;
-
     align-items: flex-start;
     flex-direction: column;
     background: white;
     box-shadow: $box-shadow;
-    padding: 3px !important;
     margin: 0;
     border-radius: 5px;
 
@@ -311,38 +331,114 @@ html {
             align-items: flex-end;
             justify-content: flex-start;
             cursor: pointer;
+
+            &:hover {
+                background-color: #E7F1FD
+            }
+
         }
 
-        li:hover {
-            background-color: #f6f7f2;
+        .dropdown-item {
+            label {
+                display: flex;
+                width: 100%;
+                padding: 11px 9px;
+                align-items: center;
+                height: 40px;
+                justify-content: flex-start;
+                position: relative;
+
+                input[type="checkbox"] {
+                    margin-right: 11px;
+                    margin-bottom: 1px;
+                    position: relative;
+                    display: flex;
+
+                    &:checked:after {
+                        content: ""
+                    }
+
+                    opacity: 0;
+                }
+
+                img {
+                    position: absolute;
+                    left: 9px;
+                    top: 10px;
+                }
+
+            }
         }
+
 
     }
 
 }
 
+.province-list {
+    display: flex;
+    flex-direction: revert;
+    width: 100%;
+    justify-content: space-between;
+
+    .province-placeholder {
+        display: flex;
+        flex-direction: revert;
+        width: 100%;
+        justify-content: space-between;
+        color: #999
+    }
+}
+
 .province-items {
     display: flex;
-    flex-wrap: wrap;
     flex-direction: row;
-}
+    flex-wrap: wrap;
 
-.province-placeholder {
-    opacity: 0.5;
-}
+    .province-item {
+        margin: 1px 3px;
+        padding: 3px 10px;
+        padding-left: 16px;
+        border-radius: 15px;
+        background: #F8F8F8;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
 
-.province-item {
-    margin: 3px;
-    padding: 3px 10px;
-    border-radius: 15px;
-    background: rgba(20, 20, 20, 0.1);
+        border-radius: 15px;
+        height: 24px;
 
-    .text {
-        padding-right: 10px;
+        .text {
+            padding-right: 10px;
+        }
     }
 }
 
 .message-warn {
     text-align: right;
     color: red;
+}
+
+.button {
+    margin: 3px;
+    padding: 4px 19px;
+    border-radius: 4px;
+    background-color: $primary;
+    color: #fff;
+    font-size: 16px;
+
+    &.save {
+        font-weight: bold;
+
+        &:disabled {
+            background-color: #DCDCDC;
+            pointer-events: none;
+        }
+    }
+
+    &.cancel {
+        background-color: transparent;
+        color: $primary;
+
+    }
 }
