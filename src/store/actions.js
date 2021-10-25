@@ -37,7 +37,6 @@ export default {
       .then(function() {});
   },
   REMOVE_PROVINCE({ commit }, provinceID) {
-    console.log("remove this", provinceID);
     commit("REMOVE_PROVINCE", provinceID);
   },
   SAVE_PROVINCE({ commit }) {

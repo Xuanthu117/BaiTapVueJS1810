@@ -25,7 +25,7 @@ export default {
       id: 3,
       name: "Bài tập 3",
       description: "vue-Router và form Validate",
-      status: false,
+      status: true,
       link: "/BaiTap3",
     },
   ],
@@ -45,4 +45,5 @@ export default {
   ],
   NEW_PROVINCES: [],
   CURRENT_PROVINCES: [],
+  IS_STATE_CHANGE: false,
 };

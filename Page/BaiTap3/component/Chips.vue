@@ -1,11 +1,8 @@
 <template>
   <div class="province-items">
     <div class="province-item" v-for="province in datas" :key="province.id">
-      <small class="text">{{ province.name }}</small>
-      <v-icon
-        @click.stop="removeThisProvince(province.code)"
-        :x-small="true"
-        size="14"
+      <span class="text">{{ province.name }}</span>
+      <v-icon @click.stop="removeThisProvince(province.code)" :small="true"
         >mdi-close</v-icon
       >
     </div>
