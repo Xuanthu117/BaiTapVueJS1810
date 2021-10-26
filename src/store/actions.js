@@ -45,4 +45,7 @@ export default {
   CANCEL_PROVINCE({ commit }) {
     commit("CANCEL_PROVINCE");
   },
+  CHANGE_PROVINCE_CHECK({ commit }, code) {
+    commit("CHANGE_PROVINCE_CHECK", code);
+  },
 };

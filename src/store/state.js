@@ -24,7 +24,7 @@ export default {
     {
       id: 3,
       name: "Bài tập 3",
-      description: "vue-Router và form Validate",
+      description: "dropdown checkbox",
       status: true,
       link: "/BaiTap3",
     },
