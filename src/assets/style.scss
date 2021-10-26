@@ -379,6 +379,7 @@ html {
 }
 
 .province-placeholder {
+    padding-left: 4px;
     display: flex;
     flex-direction: revert;
     width: 100%;
@@ -395,8 +396,7 @@ html {
     flex-wrap: wrap;
 
     .province-item {
-        margin: 0 3px;
-        margin-bottom: 4px;
+        margin: 0 3px 3px 0;
 
         padding: 3px 10px;
         padding-left: 16px;

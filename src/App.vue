@@ -1,11 +1,9 @@
 <template>
-  <div>
-    <v-app>
-      <v-container align="flex-start" justify="center">
-        <router-view></router-view>
-      </v-container>
-    </v-app>
-  </div>
+  <v-app>
+    <v-container align="flex-start" justify="center">
+      <router-view></router-view>
+    </v-container>
+  </v-app>
 </template>
 
 <script>

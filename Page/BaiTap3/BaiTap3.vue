@@ -1,39 +1,37 @@
 <template>
-  <v-container align="center">
-    <v-row align="center">
-      <v-col md="4">
-        <div class="dropdown">
-          <div
-            @click="showDropdown"
-            class="dropdown-select"
-            :class="{ open: isExpanded }"
-          >
-            <div class="province-placeholder">
-              Chọn tỉnh thành
-              <v-icon class="icon" x-small>mdi-chevron-down</v-icon>
-            </div>
-          </div>
-          <div class="dropdown-box" v-show="isExpanded">
-            <List :datas="CURRENT_PROVINCES"></List>
-            <div v-show="CURRENT_PROVINCES.length == 0">No data available</div>
-            <div class="dropdown-button">
-              <button
-                class="button save"
-                @click="saveProvince"
-                :disabled="!isStateChange"
-              >
-                Đồng ý
-              </button>
-              <button class="button cancel" @click="cancelProvince">Hủy</button>
-            </div>
+  <v-row align="center">
+    <v-col fluid>
+      <div class="dropdown">
+        <div
+          @click="showDropdown"
+          class="dropdown-select"
+          :class="{ open: isExpanded }"
+        >
+          <div class="province-placeholder">
+            Chọn tỉnh thành
+            <v-icon class="icon" x-small>mdi-chevron-down</v-icon>
           </div>
         </div>
-        <div class="dropdown-select" v-show="provincesChecked.length > 0">
-          <Chips :datas="provincesChecked"></Chips>
+        <div class="dropdown-box" v-show="isExpanded">
+          <List :datas="CURRENT_PROVINCES"></List>
+          <div v-show="CURRENT_PROVINCES.length == 0">No data available</div>
+          <div class="dropdown-button">
+            <button
+              class="button save"
+              @click="saveProvince"
+              :disabled="!isStateChange"
+            >
+              Đồng ý
+            </button>
+            <button class="button cancel" @click="cancelProvince">Hủy</button>
+          </div>
         </div>
-      </v-col>
-    </v-row>
-  </v-container>
+      </div>
+      <div class="dropdown-select" v-show="provincesChecked.length > 0">
+        <Chips :datas="provincesChecked"></Chips>
+      </div>
+    </v-col>
+  </v-row>
 </template>
 <script>
 import { mapGetters, mapState } from "vuex";
