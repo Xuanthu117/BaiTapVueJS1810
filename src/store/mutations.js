@@ -46,6 +46,7 @@ export default {
   SAVE_PROVINCE(state) {
     const obj1 = state.CURRENT_PROVINCES.map((a) => Object.assign({}, a));
     state.CHECKED_PROVINCES = obj1;
+
     state.IS_STATE_CHANGE = false;
   },
   CANCEL_PROVINCE(state) {
@@ -53,5 +54,11 @@ export default {
     state.CURRENT_PROVINCES = obj2;
     state.IS_STATE_CHANGE = false;
   },
+  CHANGE_PROVINCE_CHECK(state, code) {
+    state.CURRENT_PROVINCES.forEach((item) => {
+      if (item.code == code) {
+        item.isChecked = !item.isChecked;
+      }
+    });
+  },
 };
-// The issue originates from JS itself, as objects are passed by reference, not by value, so Vuex will point to the same object in memory.
